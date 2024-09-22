@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Create a template for R42 projects, which are text heavy
 
-## Getting Started
 
-First, run the development server:
+- FIGMA_URL: download and store figma frames in asset folder as svgs. Rather than use Amazon S3, we
+perhaps use figma for all our asset storage, with these assets being incrementally copied to the asset folder
+on command from our cli. The client should additionally add typed metadata to these assets, such as the name of the asset, its
+figma page name, its figma id, and any other relevant information.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Have a `References` database, which stores a uuid, and associated reference data. We may need a form component for this on the site itself (i.e. have an editor page), so that users can quickly add references. 
+- We want the ability for the site to be statically generated
+- It would be ideal for comments to be made on the site itself. Use liveblocks for threads etc.
+- Screenshotting etc. How do we do this? Do we need to create a custom webscraper to intelligently take screenshots, or can we somehow embed data attributes into the html to give clearer instructions? But screenshots are simply not necessary if comments can literally be added to the site itself? Is there a way to get rid of liveblocks for a static site? Presumably we can just disabled it in `production` vs `development` ?
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
