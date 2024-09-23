@@ -15,4 +15,16 @@ figma page name, its figma id, and any other relevant information.
 
 
 
+Modal editing?
+Look at the blackbook text editor: see how command palette was implemented
 
+rust```
+trait CrayonEditor {
+    fn undo() -> Result<(), String> {
+        Err("Not implemented".to_string())
+    }
+    fn redo() -> Result<(), String> {
+        Err("Not implemented".to_string())
+    }   
+}
+```

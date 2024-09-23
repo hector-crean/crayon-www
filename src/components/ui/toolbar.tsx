@@ -1,15 +1,9 @@
 "use client"
 
-import React from 'react'
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { BoxSelect, HandIcon, ZoomIn, PencilIcon, ShapesIcon, TypeIcon, UndoIcon, RedoIcon, ImageIcon, LayersIcon, EyeIcon, DownloadIcon } from 'lucide-react'
+import { BoxSelect, HandIcon, ImageIcon, PencilIcon, ShapesIcon, TypeIcon, ZoomIn } from 'lucide-react'
+import React from 'react'
 
 type Tool = "select" | "hand" | "zoom" | "draw" | "shape" | "text" | "image"
 
@@ -31,27 +25,29 @@ interface ToolbarProps {
 export function Toolbar({ activeTool, setActiveTool }: ToolbarProps) {
   return (
     <TooltipProvider>
-        <div className="flex items-center space-x-2 bg-primary  rounded-2xl shadow-md p-1.5 space-y-1.5 px-2">
-          {tools.map((tool) => (
-            <Tooltip key={tool.id}>
-              <TooltipTrigger asChild>
-                <Button
-                  variant={activeTool === tool.id ? "secondary" : "ghost"}
-                  size="icon"
-                  onClick={() => setActiveTool(tool.id)}
-                  aria-label={tool.label}
-                >
-                  {tool.icon}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{tool.label}</p>
-              </TooltipContent>
-            </Tooltip>
-          ))} 
+      <div className="flex items-center space-x-2 bg-primary text-primary-foreground rounded-2xl shadow-md p-1.5 px-2">
+        {tools.map((tool) => (
+          <Tooltip key={tool.id}>
+            <TooltipTrigger asChild>
+              <Button
+                variant={activeTool === tool.id ? "secondary" : "ghost"}
+                size="icon"
+                onClick={() => setActiveTool(tool.id)}
+                aria-label={tool.label}
+                className={`flex items-center justify-center ${activeTool === tool.id ? "bg-secondary text-secondary-foreground" : "bg-transparent text-foreground"}`}
+              >
+                {tool.icon}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{tool.label}</p>
+            </TooltipContent>
+          </Tooltip>
+        ))}
       </div>
     </TooltipProvider>
   )
 }
 
 export type { Tool }
+
